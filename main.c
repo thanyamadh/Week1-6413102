@@ -5,7 +5,7 @@ int findprime(int);
 
 int main(int argc,char*argv[])
 {
-  int i,N,x=0,j=0,min,max;
+  int i,N,x=0,j=0,min,max,k=0;
   int *a,*prime;
     
   N=argc-1;
@@ -21,25 +21,33 @@ int main(int argc,char*argv[])
       prime[0+j]=a[i-1];
       j++;
       x=0;
+      k=1;
     }
   }
+  if(k==0)
+    printf("---No prime---\n");
+  else
+  {
+      min=prime[0];
+      for(i=1; i<j; i++)
+      {
+        if(prime[i]<min)
+        min = prime[i];
+      }
+      printf("The smallest prime is %d \n",min);
+      
+      max=prime[0];
+      for(i=1; i<j; i++)
+      {
+        if(prime[i]>max)
+        max = prime[i];
+      }
+      printf("The biggest prime is %d \n",max);
+  }
 
-  min=prime[0];
-  for(i=1; i<j; i++)
-  {
-    if(prime[i]<min)
-    min = prime[i];
-  }
-  printf("The smallest prime is %d \n",min);
-  
-  max=prime[0];
-  for(i=1; i<j; i++)
-  {
-    if(prime[i]>max)
-     max = prime[i];
-  }
-  printf("The biggest prime is %d \n",max);
 }
+
+
 
 int findprime(int n)
 {
